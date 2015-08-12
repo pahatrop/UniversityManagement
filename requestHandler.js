@@ -84,7 +84,18 @@ function requestDBRemove(name, id, callback)
 	}
 }
 
+function requestDBGetTZ(id, callback)
+{
+	var sql = 'SELECT * FROM `timezones` WHERE `id` = '+mysql.escape(id);
+	
+	userLog(sql);
+	client.query(sql, function(error, result, fields){
+		callback(error, result);
+	});
+}
+
 exports.requestDBGet = requestDBGet;
 exports.requestDBCreate = requestDBCreate;
 exports.requestDBEdit = requestDBEdit;
 exports.requestDBRemove = requestDBRemove;
+exports.requestDBGetTZ = requestDBGetTZ;

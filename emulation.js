@@ -93,11 +93,11 @@ function Start(data, callback)
 				cBack(err);
 			});
 		},
-		function(cBack){
-			setTimeout(function(){
-				cBack();
-			},0); 
-		},
+		//function(cBack){
+		//	setTimeout(function(){
+		//		cBack();
+		//	},0); 
+		//},
 		function(cBack){
 			var msgArr = {}
 			var add_students_number = 0;
@@ -112,15 +112,18 @@ function Start(data, callback)
 						}
 					}
 					msgArr = {currentDate:start_emulation,new_students_number:add_students_number,expel_students_number:expel_students_number,largest_number_of_incoming:getRandomArbitary(0,3)};
-					cBack();
+					setImmediate(function(){
+						cBack();
+					});
 				},
 				function done(){
+					//userLog("-------------------------------------------------");
 					callback(null,JSON.stringify(msgArr));
 				});
-			},
+			}/*,
 		function(err){
 			cBack(err);
-		}
+		}*/
 	]);
 }
 exports.Start = Start;

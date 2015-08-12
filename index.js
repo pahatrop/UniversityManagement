@@ -47,6 +47,10 @@ app.get('/api/:type', function(req,res)
 				handler(err,result,res);			
 			});
 			break;
+			case "tz" : requestHandler.requestDBGetTZ(url_parts.query.id, function(err, result){
+				handler(err,result,res);			
+			});
+			break;
 		}
     }
 );
